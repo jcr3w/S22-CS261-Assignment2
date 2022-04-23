@@ -115,47 +115,34 @@ class DynamicArray:
         TODO: Write this implementation
         """
 
+        new_data = [None] * new_capacity
+
         # Method only accepts positive integers for new_capacity and new_capacity cannot be smaller than the
         # elements currently stored in the dynamic array.  If false, end program and return nothing.
         if new_capacity <= 0 or new_capacity < self._size:
             return
 
         # Create new data elements to be used in updated array elements
-        new_data = [None] * new_capacity
-
-        # Create array of size new_capacity and populate it with data elements from new_data
         for num in range(self._size):
             new_data[num] = self._data[num]
 
+        # Updates capacity and data to new_capacity and new_data, respectuflly.
         self._capacity = new_capacity
         self._data = new_data
-
-
-
-        #         self._size = 0
-        #         self._capacity = 4
-        #         self._data = StaticArray(self._capacity)
-
-        # This method changes the capacity of the underlying storage for the array elements. It does
-        # not change the values or the order of any elements currently stored in the dynamic array.
-        # It is intended to be an “internal” method of the Dynamic Array class, called by other class
-        # methods, such as append(), remove_at_index(), or insert_at_index(), to manage the
-        # capacity of the underlying data structure.
-        # The method should only accept positive integers for new_capacity. Additionally,
-        # new_capacity cannot be smaller than the number of elements currently stored in the
-        # dynamic array (which is tracked by the self._size variable). If new_capacity is not a
-        # positive integer or if new_capacity < self._size, this method should not do any work and
-        # immediately exit.
-
-
-
-
 
     def append(self, value: object) -> None:
         """
         TODO: Write this implementation
         """
-        pass
+
+        # Check to see if the size if size is greater than capacity.  If true, double the capacity
+        # before adding a new value.
+        if self._size >= self._capacity:
+            self.resize(self._capacity * 2)
+
+
+        self._data[self._size] = value
+        self._size = self._size + 1
 
     def insert_at_index(self, index: int, value: object) -> None:
         """
