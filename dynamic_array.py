@@ -127,9 +127,8 @@ class DynamicArray:
         for num in range(self._size):
             new_data[num] = self._data[num]
 
-        self._data = new_data
-
         self._capacity = new_capacity
+        self._data = new_data
 
 
 
