@@ -121,7 +121,7 @@ class DynamicArray:
             return
 
         # Create new data elements to be used in updated array elements
-        new_data = ["Cat"] * new_capacity
+        new_data = [None] * new_capacity
 
         # Create array of size new_capacity and populate it with data elements from new_data
         for num in range(self._size):
