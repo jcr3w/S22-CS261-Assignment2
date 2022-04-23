@@ -1,8 +1,8 @@
-# Name:
-# OSU Email:
+# Name: Justin Greer
+# OSU Email: greerjus@oregonstate.edu
 # Course: CS261 - Data Structures
-# Assignment:
-# Due Date:
+# Assignment: Assignment 2 - Dynamic Array
+# Due Date: April 25, 2022
 # Description:
 
 
@@ -114,7 +114,43 @@ class DynamicArray:
         """
         TODO: Write this implementation
         """
-        pass
+
+        # Method only accepts positive integers for new_capacity and new_capacity cannot be smaller than the
+        # elements currently stored in the dynamic array.  If false, end program and return nothing.
+        if new_capacity <= 0 or new_capacity < self._size:
+            return
+
+        # Create new data elements to be used in updated array elements
+        new_data = ["Cat"] * new_capacity
+
+        # Create array of size new_capacity and populate it with data elements from new_data
+        for num in range(self._size):
+            new_data[num] = self._data[num]
+
+        self._data = new_data
+
+        self._capacity = new_capacity
+
+
+
+        #         self._size = 0
+        #         self._capacity = 4
+        #         self._data = StaticArray(self._capacity)
+
+        # This method changes the capacity of the underlying storage for the array elements. It does
+        # not change the values or the order of any elements currently stored in the dynamic array.
+        # It is intended to be an “internal” method of the Dynamic Array class, called by other class
+        # methods, such as append(), remove_at_index(), or insert_at_index(), to manage the
+        # capacity of the underlying data structure.
+        # The method should only accept positive integers for new_capacity. Additionally,
+        # new_capacity cannot be smaller than the number of elements currently stored in the
+        # dynamic array (which is tracked by the self._size variable). If new_capacity is not a
+        # positive integer or if new_capacity < self._size, this method should not do any work and
+        # immediately exit.
+
+
+
+
 
     def append(self, value: object) -> None:
         """
