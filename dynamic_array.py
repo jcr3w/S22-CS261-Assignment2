@@ -173,8 +173,6 @@ class DynamicArray:
         # increase the size (number of elements in the array).  If size exceeds capacity, double capacity (see above).
         self._size += 1
 
-
-
     def remove_at_index(self, index: int) -> None:
         """
         TODO: Write this implementation
@@ -207,7 +205,25 @@ class DynamicArray:
         """
         TODO: Write this implementation
         """
-        return DynamicArray()
+
+        # This method returns a new Dynamic Array object that contains the requested number of
+        # elements from the original array, starting with the element located at the requested start
+        # index. If the array contains N elements, a valid start_index is in range [0, N - 1] inclusive.
+        # A valid size is a non-negative integer.
+        # If the provided start index or size is invalid, or if there are not enough elements between
+        # the start index and the end of the array to make the slice of the requested size, this method
+        # raises a custom “DynamicArrayException”. Code for the exception is provided in the skeleton
+        # file
+
+        start = start_index
+        end = start_index + size
+
+        if start < 0 or size < 0 or start >= (self._size) or self._size < end:
+            raise DynamicArrayException
+
+        input = (self._data[num] for num in range(start, end, 1))
+
+        return DynamicArray(input)
 
     def merge(self, second_da: "DynamicArray") -> None:
         """
