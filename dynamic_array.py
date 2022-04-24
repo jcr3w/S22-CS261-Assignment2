@@ -122,6 +122,9 @@ class DynamicArray:
         if new_capacity <= 0 or new_capacity < self._size:
             return
 
+        if new_capacity <= 0 or new_capacity < self._size:
+            return
+
         # Create new data elements to be used in updated array elements
         for num in range(self._size):
             new_data[num] = self._data[num]
@@ -151,8 +154,6 @@ class DynamicArray:
 
         # Check to see if the size if size is greater than capacity.  If true, double the capacity
         # before adding a new value.
-        if self._size >= self._capacity:
-            self.resize(self._capacity * 2)
 
         # Range(start, stop, and increment)
         for num in range(self._size, index, -1):
@@ -164,6 +165,9 @@ class DynamicArray:
 
         # increase the size (number of elements in the array).  If size exceeds capacity, double capacity (see above).
         self._size += 1
+
+        if self._size >= self._capacity:
+            self.resize(self._capacity * 2)
 
     def remove_at_index(self, index: int) -> None:
         """
