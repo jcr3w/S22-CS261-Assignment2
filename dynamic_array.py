@@ -157,6 +157,11 @@ class DynamicArray:
         if index < 0 or index >= self._size:
             raise DynamicArrayException
 
+        # Check to see if the size if size is greater than capacity.  If true, double the capacity
+        # before adding a new value.
+        if self._size >= self._capacity:
+            self.resize(self._capacity * 2)
+
         # Range(start, stop, and increment)
         for num in range(self._size, index, -1):
             less_num = num - 1
@@ -168,10 +173,7 @@ class DynamicArray:
         # increase the size (number of elements in the array).  If size exceeds capacity, double capacity (see above).
         self._size += 1
 
-        # Check to see if the size if size is greater than capacity.  If true, double the capacity
-        # before adding a new value.
-        if self._size >= self._capacity:
-            self.resize(self._capacity * 2)
+
 
     def remove_at_index(self, index: int) -> None:
         """
