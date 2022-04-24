@@ -183,9 +183,16 @@ class DynamicArray:
         # When the number of elements stored in the array (before removal) is STRICTLY LESS than
         # ¼ of its current capacity, the capacity must be reduced to TWICE the number of current
         # elements. This check / capacity adjustment must happen BEFORE removal of the element.
-        if self._size < (self._capacity // 4):
-            self.resize(self._size * 2)
 
+        # If the current capacity (before reduction) is 10 elements or less, reduction should not occur
+        # at all. If the current capacity (before reduction) is greater than 10 elements, the reduced
+        # capacity cannot become less than 10 elements. Please see the examples below, especially
+        # example #3, for clarification.
+
+        if (self._size * 2) < 10 and self._size < (self._capacity / 4):
+            self.resize(10)
+        elif (self._size * 2) >= 10 and self._size < (self._capacity / 4):
+            self.resize(self._size * 2)
 
         for num in range(index, self._size -1, 1):
             self._data[num] = self._data[num+1]
