@@ -154,8 +154,8 @@ class DynamicArray:
 
         # If the provided index is invalid, the method raises a custom
         # “DynamicArrayException”
-        if index < 0 or index >= self._size:
-            raise DynamicArrayException
+        #if index < 0 or index >= self._size:
+        #    raise DynamicArrayException
 
         # Check to see if the size if size is greater than capacity.  If true, double the capacity
         # before adding a new value.
@@ -180,18 +180,8 @@ class DynamicArray:
         TODO: Write this implementation
         """
 
-        # Check to see if the size if size is greater than capacity.  If true, double the capacity
-        # before adding a new value.
-        if self._size <= (self._capacity) // 4:
-            self.resize(self._capacity // 2)
-
-        # Range(start, stop, and increment)
-        for num in range(index, self._size, -1):
-            less_num = num - 1
-            self._data[num] = self._data[less_num]
-
-        # Update value at the correct index
-        self._data[index] = []
+        for num in range(index, self._size -1, 1):
+            self._data[num] = self._data[num+1]
 
         # increase the size (number of elements in the array).  If size exceeds capacity, double capacity (see above).
         self._size -= 1
