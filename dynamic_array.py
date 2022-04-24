@@ -180,6 +180,9 @@ class DynamicArray:
         TODO: Write this implementation
         """
 
+        if index < 0 or index > self._size:
+            raise DynamicArrayException
+
         # When the number of elements stored in the array (before removal) is STRICTLY LESS than
         # ¼ of its current capacity, the capacity must be reduced to TWICE the number of current
         # elements. This check / capacity adjustment must happen BEFORE removal of the element.
