@@ -112,7 +112,7 @@ class DynamicArray:
 
     def resize(self, new_capacity: int) -> None:
         """
-        TODO: Write this implementation
+        Method that changes the capacity of the underlying storage.
         """
 
         new_data = [None] * new_capacity
@@ -132,7 +132,7 @@ class DynamicArray:
 
     def append(self, value: object) -> None:
         """
-        TODO: Write this implementation
+        Method that enables user to add new value to the end of a dynamic array.
         """
 
         # Check to see if the size if size is greater than capacity.  If true, double the capacity
@@ -140,21 +140,51 @@ class DynamicArray:
         if self._size >= self._capacity:
             self.resize(self._capacity * 2)
 
-
+        # TBD.  Rewrite in cleanup.
         self._data[self._size] = value
         self._size = self._size + 1
 
     def insert_at_index(self, index: int, value: object) -> None:
         """
-        TODO: Write this implementation
+        Method that adds new value at a specific location in the array (index).
         """
-        pass
+
+        # Check to see if the size if size is greater than capacity.  If true, double the capacity
+        # before adding a new value.
+        if self._size >= self._capacity:
+            self.resize(self._capacity * 2)
+
+        # Range(start, stop, and increment)
+        for num in range(self._size, index, -1):
+            less_num = num - 1
+            self._data[num] = self._data[less_num]
+
+        # Update value at the correct index
+        self._data[index] = value
+
+        # increase the size (number of elements in the array).  If size exceeds capacity, double capacity (see above).
+        self._size += 1
 
     def remove_at_index(self, index: int) -> None:
         """
         TODO: Write this implementation
         """
-        pass
+
+        # Check to see if the size if size is greater than capacity.  If true, double the capacity
+        # before adding a new value.
+        if self._size <= (self._capacity) // 4:
+            self.resize(self._capacity // 2)
+
+        # Range(start, stop, and increment)
+        for num in range(index, self._size, -1):
+            less_num = num - 1
+            self._data[num] = self._data[less_num]
+
+        # Update value at the correct index
+        self._data[index] = []
+
+        # increase the size (number of elements in the array).  If size exceeds capacity, double capacity (see above).
+        self._size -= 1
 
     def slice(self, start_index: int, size: int) -> "DynamicArray":
         """
