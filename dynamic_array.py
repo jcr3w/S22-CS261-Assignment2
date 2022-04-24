@@ -154,8 +154,8 @@ class DynamicArray:
 
         # If the provided index is invalid, the method raises a custom
         # “DynamicArrayException”
-        #if index < 0 or index >= self._size:
-        #    raise DynamicArrayException
+        if index < 0 or index > self._size:
+            raise DynamicArrayException
 
         # Check to see if the size if size is greater than capacity.  If true, double the capacity
         # before adding a new value.
@@ -179,6 +179,13 @@ class DynamicArray:
         """
         TODO: Write this implementation
         """
+
+        # When the number of elements stored in the array (before removal) is STRICTLY LESS than
+        # ¼ of its current capacity, the capacity must be reduced to TWICE the number of current
+        # elements. This check / capacity adjustment must happen BEFORE removal of the element.
+        if self._size < (self._capacity // 4):
+            self.resize(self._size * 2)
+
 
         for num in range(index, self._size -1, 1):
             self._data[num] = self._data[num+1]
