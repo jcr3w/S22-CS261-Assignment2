@@ -152,8 +152,10 @@ class DynamicArray:
         Method that adds new value at a specific location in the array (index).
         """
 
-        # Check to see if the size if size is greater than capacity.  If true, double the capacity
-        # before adding a new value.
+        # If the provided index is invalid, the method raises a custom
+        # “DynamicArrayException”
+        if index < 0 or index >= self._size:
+            raise DynamicArrayException
 
         # Range(start, stop, and increment)
         for num in range(self._size, index, -1):
@@ -166,6 +168,8 @@ class DynamicArray:
         # increase the size (number of elements in the array).  If size exceeds capacity, double capacity (see above).
         self._size += 1
 
+        # Check to see if the size if size is greater than capacity.  If true, double the capacity
+        # before adding a new value.
         if self._size >= self._capacity:
             self.resize(self._capacity * 2)
 
