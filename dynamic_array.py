@@ -213,7 +213,7 @@ class DynamicArray:
         # If the provided start index or size is invalid, or if there are not enough elements between
         # the start index and the end of the array to make the slice of the requested size, this method
         # raises a custom “DynamicArrayException”. Code for the exception is provided in the skeleton
-        # file
+        # file...
 
         start = start_index
         end = start_index + size
