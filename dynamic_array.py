@@ -206,15 +206,6 @@ class DynamicArray:
         TODO: Write this implementation
         """
 
-        # This method returns a new Dynamic Array object that contains the requested number of
-        # elements from the original array, starting with the element located at the requested start
-        # index. If the array contains N elements, a valid start_index is in range [0, N - 1] inclusive.
-        # A valid size is a non-negative integer.
-        # If the provided start index or size is invalid, or if there are not enough elements between
-        # the start index and the end of the array to make the slice of the requested size, this method
-        # raises a custom “DynamicArrayException”. Code for the exception is provided in the skeleton
-        # file...
-
         start = start_index
         end = start_index + size
 
@@ -236,25 +227,16 @@ class DynamicArray:
         for num in range(second_da._size):
             self.append(second_da[num])
 
-
-
     def map(self, map_func) -> "DynamicArray":
         """
         TODO: Write this implementation
         """
-        # his method creates a new Dynamic Array where the value of each element is derived by
+        # This method creates a new Dynamic Array where the value of each element is derived by
         # applying a given map_func to the corresponding value from the original array.
         # This method works similarly to the Python map() function. For a review on how Python’s
         # map() works, here is some suggested reading
 
-        # Create a new array (new_arr) to be manipulated by the method
-        new_arr = StaticArray(self.length())
-
-        # Loop through the elements of the array and apply the map_func to each element.  Return the results.
-        for num in range(new_arr._size):
-            new_arr.set(num, map_func(self[num]))
-            # new_arr[num] = map_func(self[num])
-        return new_arr
+        pass
 
 
     def filter(self, filter_func) -> "DynamicArray":
@@ -273,7 +255,20 @@ def find_mode(arr: DynamicArray) -> (DynamicArray, int):
     """
     TODO: Write this implementation
     """
-    pass
+# Write a standalone function outside of the Dynamic Array class that receives a
+# DynamicArray that is sorted in order, either non-descending or non-ascending. The function
+# will return a tuple containing (in this order) a DynamicArray comprising the mode
+# (most-occurring) value/s in the array, and an integer that represents the highest frequency
+# (how many times they appear).
+# If there is more than one value that has the highest frequency, all values at that frequency
+# should be included in the array being returned, in the order in which they appear in the
+# array parameter. If there is only one mode, return a DynamicArray comprised of only that
+# value.
+# You may assume that the input array will contain at least one element, and that values
+# stored in the array are all of the same type (either all numbers, or strings, or custom
+# objects, but never a mix of these). You do not need to write checks for these conditions.
+# For full credit, the function must be implemented with O(N) complexity with no additional
+# data structures (beyond the array you return) being created.
 
 
 # ------------------- BASIC TESTING -----------------------------------------
