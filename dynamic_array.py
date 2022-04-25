@@ -233,10 +233,6 @@ class DynamicArray:
         """
         TODO: Write this implementation
         """
-        # This method creates a new Dynamic Array where the value of each element is derived by
-        # applying a given map_func to the corresponding value from the original array.
-        # This method works similarly to the Python map() function. For a review on how Python’s
-        # map() works, here is some suggested reading
 
         new_arr = DynamicArray([])
 
@@ -248,6 +244,13 @@ class DynamicArray:
         """
         TODO: Write this implementation
         """
+
+        new_arr = DynamicArray([])
+
+        for num in range(DynamicArray.length(self)):
+            if filter_func(self[num]) == True:
+                new_arr.append(self[num])
+        return new_arr
 
     def reduce(self, reduce_func, initializer=None) -> object:
         """
