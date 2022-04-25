@@ -229,7 +229,14 @@ class DynamicArray:
         """
         TODO: Write this implementation
         """
-        pass
+        # This method takes another Dynamic Array object as a parameter, and appends all elements
+        # from this other array onto the current one, in the same order as they are stored in the array
+        # parameter.
+
+        for num in range(second_da._size):
+            self.append(second_da[num])
+
+
 
     def map(self, map_func) -> "DynamicArray":
         """
