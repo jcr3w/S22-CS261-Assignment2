@@ -198,6 +198,8 @@ class DynamicArray:
         for num in range(index, self._size -1, 1):
             self._data[num] = self._data[num+1]
 
+        self._data[self._size - 1] = None
+
         # increase the size (number of elements in the array).  If size exceeds capacity, double capacity (see above).
         self._size -= 1
 
@@ -236,8 +238,11 @@ class DynamicArray:
         # This method works similarly to the Python map() function. For a review on how Python’s
         # map() works, here is some suggested reading
 
-        pass
+        new_arr = DynamicArray([])
 
+        for num in range(DynamicArray.length(self)):
+            new_arr.append(map_func(self[num]))
+        return new_arr
 
     def filter(self, filter_func) -> "DynamicArray":
         """
