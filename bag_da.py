@@ -52,13 +52,25 @@ class Bag:
         """
         TODO: Write this implementation
         """
-        self._da.remove_at_index(value)
+        for num in range(self._da.length()):
+            if self._da.get_at_index(num) == value:
+                self._da.remove_at_index(num)
+            return True
+        return False
 
     def count(self, value: object) -> int:
         """
         TODO: Write this implementation
         """
-        pass
+
+        counter = 0
+        plus_up = 0
+
+        while counter < self._da.length():
+            if self._da.get_at_index(counter) == value:
+                plus_up += 1
+            counter += 1
+        return plus_up
 
     def clear(self) -> None:
         """
@@ -70,7 +82,21 @@ class Bag:
         """
         TODO: Write this implementation
         """
-        pass
+
+        # if the two bags are not of equal length, then the result in "False"
+        if self._da.length() != second_bag._da.length():
+            return False
+
+        counter = 1
+
+        # Loop through the different lists and compare the elements of the array (arr_el).  If they all match, return
+        # true, else return false.
+        while counter < self._da.length():
+            arr_el = self._da.get_at_index(counter)
+            if self.count(arr_el) != second_bag.count(arr_el):
+                return False
+            counter += 1
+        return True
 
     def __iter__(self):
         """
