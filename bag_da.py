@@ -46,13 +46,13 @@ class Bag:
         """
         TODO: Write this implementation
         """
-        pass
+        self._da.append(value)
 
     def remove(self, value: object) -> bool:
         """
         TODO: Write this implementation
         """
-        pass
+        self._da.remove_at_index(value)
 
     def count(self, value: object) -> int:
         """
