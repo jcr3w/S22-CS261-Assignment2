@@ -195,8 +195,8 @@ class DynamicArray:
         elif (self._size * 2) >= 10 and self._size < (self._capacity / 4):
             self.resize(self._size * 2)
 
-        for num in range(index, self._size -1, 1):
-            self._data[num] = self._data[num+1]
+        for num in range(index, self._size - 1, 1):
+            self._data[num] = self._data[num + 1]
 
         self._data[self._size - 1] = None
 
@@ -256,13 +256,38 @@ class DynamicArray:
         """
         TODO: Write this implementation
         """
-        pass
+        da_length = DynamicArray.length(self)
+        ans = 0
+        x = 0
+        y = 0
 
+        for num in range(da_length):
+            if initializer is None:
+                x = self[0]
+                ans = reduce_func(x, y)
+            else:
+                x = initializer
+                ans = reduce_func(x, y)
+            ans = ans + ans
+        return ans
 
 def find_mode(arr: DynamicArray) -> (DynamicArray, int):
     """
     TODO: Write this implementation
     """
+    mode = DynamicArray([])
+    frequency = DynamicArray([])
+    counter = 1
+
+    while counter < arr.length():
+        if arr[counter] == arr[counter - 1]:
+            mode.append(arr[counter])
+            frequency = counter
+        counter += 1
+
+    return mode, frequency
+
+
 # Write a standalone function outside of the Dynamic Array class that receives a
 # DynamicArray that is sorted in order, either non-descending or non-ascending. The function
 # will return a tuple containing (in this order) a DynamicArray comprising the mode
