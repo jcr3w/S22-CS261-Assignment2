@@ -287,7 +287,6 @@ def find_mode(arr: DynamicArray) -> (DynamicArray, int):
 
     return mode, frequency
 
-
 # Write a standalone function outside of the Dynamic Array class that receives a
 # DynamicArray that is sorted in order, either non-descending or non-ascending. The function
 # will return a tuple containing (in this order) a DynamicArray comprising the mode
