@@ -175,7 +175,7 @@ class DynamicArray:
 
     def remove_at_index(self, index: int) -> None:
         """
-        TODO: Write this implementation
+        Method that removes the element at the specified index in the dynamic array.
         """
 
         # Check for a DynamicArrayException
@@ -204,16 +204,21 @@ class DynamicArray:
 
     def slice(self, start_index: int, size: int) -> "DynamicArray":
         """
-        TODO: Write this implementation
+        Method that takes the inputs 'start_index' and 'size' and returns a slice of elements that fall within
+        the specified range.  For example, if an array of [1,2,3,4,5] is given and the start_index is 0 and the
+        size is 3, the method will return [1,2,3].
         """
 
+        # Define start of the slice and end of the slice
         start = start_index
         end = start_index + size
 
+        # Define the criteria for a DynamicArrayException
         if start < 0 or size < 0 or start >= (self._size) or self._size < end:
             raise DynamicArrayException
 
-        input = (self._data[num] for num in range(start, end, 1))
+        # Loop that iterates through the array starting at 'start', ending at 'end', and incrementing once
+        input = (self._data[num] for num in range(start, end))
 
         return DynamicArray(input)
 
@@ -285,22 +290,6 @@ def find_mode(arr: DynamicArray) -> (DynamicArray, int):
         counter += 1
 
     return mode, frequency
-
-# Write a standalone function outside of the Dynamic Array class that receives a
-# DynamicArray that is sorted in order, either non-descending or non-ascending. The function
-# will return a tuple containing (in this order) a DynamicArray comprising the mode
-# (most-occurring) value/s in the array, and an integer that represents the highest frequency
-# (how many times they appear).
-# If there is more than one value that has the highest frequency, all values at that frequency
-# should be included in the array being returned, in the order in which they appear in the
-# array parameter. If there is only one mode, return a DynamicArray comprised of only that
-# value.
-# You may assume that the input array will contain at least one element, and that values
-# stored in the array are all of the same type (either all numbers, or strings, or custom
-# objects, but never a mix of these). You do not need to write checks for these conditions.
-# For full credit, the function must be implemented with O(N) complexity with no additional
-# data structures (beyond the array you return) being created.
-
 
 # ------------------- BASIC TESTING -----------------------------------------
 
