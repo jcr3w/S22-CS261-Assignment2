@@ -118,14 +118,14 @@ class DynamicArray:
 
         # Method only accepts positive integers for new_capacity and new_capacity cannot be smaller than the
         # elements currently stored in the dynamic array.  If false, end program and return nothing.
-        if new_capacity <= 0 or new_capacity < self._size:
+        if new_capacity <= 0 or new_capacity < self.length():
             return
 
-        if new_capacity <= 0 or new_capacity < self._size:
+        if new_capacity <= 0 or new_capacity < self.length():
             return
 
         # Create new data elements to be used in updated array elements
-        for num in range(self._size):
+        for num in range(self.length()):
             new_data[num] = self._data[num]
 
         # Updates capacity and data to new_capacity and new_data, respectuflly.
@@ -139,11 +139,12 @@ class DynamicArray:
 
         # Check to see if the size if size is greater than capacity.  If true, double the capacity
         # before adding a new value.
-        if self._size >= self._capacity:
-            self.resize(self._capacity * 2)
+
+        if self.length() >= self.get_capacity():
+            self.resize(self.get_capacity() * 2)
 
         # TBD.  Rewrite in cleanup.
-        self._data[self._size] = value
+        self._data[self.length()] = value
         self._size = self._size + 1
 
     def insert_at_index(self, index: int, value: object) -> None:
@@ -158,11 +159,11 @@ class DynamicArray:
 
         # Check to see if the size if size is greater than capacity.  If true, double the capacity
         # before adding a new value.
-        if self._size >= self._capacity:
-            self.resize(self._capacity * 2)
+        if self.length() >= self.get_capacity():
+            self.resize(self.get_capacity() * 2)
 
         # Range(start, stop, and increment)
-        for num in range(self._size, index, -1):
+        for num in range(self.length(), index, -1):
             less_num = num - 1
             self._data[num] = self._data[less_num]
 
@@ -178,25 +179,25 @@ class DynamicArray:
         """
 
         # Check for a DynamicArrayException
-        if index < 0 or index > self._size - 1:
+        if index < 0 or index > self.length() - 1:
             raise DynamicArrayException
 
         # Resize array based on rulers laid out in instructions.  Pre-Reduction Rules:
         # 1. If the number of elements is less than 1/4 of capacity, reduce capacity to twice the number of elements.
         # 2. If pre-reduction capacity is greater than 10, post-reduction capacity cannot be less than 10.
         # 3. If capacity is less than 10 elements, reduction shouldn't occur
-        if self._capacity > 10 and self._size < self._capacity / 4:
-            if self._size <= 4:
+        if self.get_capacity() > 10 and self.length() < self.get_capacity() / 4:
+            if self.length() <= 4:
                 self.resize(10)
             else:
                 self.resize(self._size * 2)
 
         # The following loop and statements work through the array and remove the element at the specified index.
 
-        for num in range(index, self._size - 1, 1):
+        for num in range(index, self.length() - 1, 1):
             self._data[num] = self._data[num + 1]
 
-        self._data[self._size - 1] = None
+        self._data[self.length() - 1] = None
 
         # Decrease the size (number of elements in the array).  If size exceeds capacity, double capacity (see above).
         self._size -= 1
@@ -213,7 +214,7 @@ class DynamicArray:
         end = start_index + size
 
         # Define the criteria for a DynamicArrayException
-        if start < 0 or size < 0 or start >= (self._size) or self._size < end:
+        if start < 0 or size < 0 or start >= (self.length()) or self.length() < end:
             raise DynamicArrayException
 
         # Loop that iterates through the array starting at 'start', ending at 'end'
@@ -230,7 +231,7 @@ class DynamicArray:
         # parameter.
 
         # Loop that uses the append method (as defined above) to append 'second_da' to the DynamicArray
-        for num in range(second_da._size):
+        for num in range(second_da.length()):
             self.append(second_da[num])
 
     def map(self, map_func) -> "DynamicArray":
@@ -284,11 +285,11 @@ class DynamicArray:
             ans = ans + ans
         return ans
 
-
 def find_mode(arr: DynamicArray) -> (DynamicArray, int):
     """
     TODO: Write this implementation
     """
+
     mode = DynamicArray([])
     frequency = DynamicArray([])
     counter = 1
