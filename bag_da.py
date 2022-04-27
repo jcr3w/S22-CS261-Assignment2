@@ -118,23 +118,25 @@ class Bag:
 
     def __iter__(self):
         """
-        TODO: Write this implementation
+        Method that enables the Bag to iterate across itself.
         """
-        self._size = 0
-        self._capacity = 10
-        self._data = StaticArray(self._capacity)
+        #self._size = 0
+        #self._capacity = 10
+        #self._data = StaticArray(self._capacity)
         counter = 0
 
-        while counter < self._da.get_capacity():
-            print(self._da.get_at_index(counter))
+        while counter < self._da.length():
             counter +=1
-
+            print(self._da.get_at_index(counter))
 
     def __next__(self):
         """
-        TODO: Write this implementation
+        Method that will return the next item in the Bag.
         """
-        pass
+
+        while value < self._da.length():
+            value += 1
+            print(self._da.get_at_index(value))
 
 # ------------------- BASIC TESTING -----------------------------------------
 
