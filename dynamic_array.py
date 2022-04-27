@@ -178,24 +178,28 @@ class DynamicArray:
         TODO: Write this implementation
         """
 
-        # DO NOT SUBMIT.  NEED TO FIX CODE.  DO NOT SUBMIT.
-
+        # Check for a DynamicArrayException
         if index < 0 or index > self._size - 1:
             raise DynamicArrayException
 
-
+        # Resize array based on rulers laid out in instructions.  Pre-Reduction Rules:
+        # 1. If the number of elements is less than 1/4 of capacity, reduce capacity to twice the number of elements.
+        # 2. If pre-reduction capacity is greater than 10, post-reduction capacity cannot be less than 10.
+        # 3. If capacity is less than 10 elements, reduction shouldn't occur
         if self._capacity > 10 and self._size < self._capacity / 4:
             if self._size <= 4:
                 self.resize(10)
             else:
                 self.resize(self._size * 2)
 
+        # The following loop and statements work through the array and remove the element at the specified index.
+
         for num in range(index, self._size - 1, 1):
             self._data[num] = self._data[num + 1]
 
         self._data[self._size - 1] = None
 
-        # increase the size (number of elements in the array).  If size exceeds capacity, double capacity (see above).
+        # Decrease the size (number of elements in the array).  If size exceeds capacity, double capacity (see above).
         self._size -= 1
 
     def slice(self, start_index: int, size: int) -> "DynamicArray":
