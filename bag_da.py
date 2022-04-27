@@ -48,15 +48,21 @@ class Bag:
         """
         self._da.append(value)
 
-    def remove(self, value: object) -> bool:
+    def remove(self, value: object) -> DynamicArray:
         """
         TODO: Write this implementation
         """
-        for num in range(self._da.length()):
-            if self._da.get_at_index(num) == value:
-                self._da.remove_at_index(num)
-            return True
+
+        counter = 0
+
+        while counter < self._da.length():
+            if self._da.get_at_index(counter) == value:
+                self._da.remove_at_index(counter)
+                return True
+            counter += 1
         return False
+
+
 
     def count(self, value: object) -> int:
         """
