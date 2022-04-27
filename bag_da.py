@@ -90,7 +90,8 @@ class Bag:
         TODO: Write this implementation
         """
 
-        counter = 1
+        # counter used to count the number of iterations for the while loop.
+        counter = 0
 
         # if the two bags are not of equal length, then the result in "False"
         if self._da.length() != second_bag._da.length():
