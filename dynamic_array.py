@@ -217,29 +217,35 @@ class DynamicArray:
         if start < 0 or size < 0 or start >= (self._size) or self._size < end:
             raise DynamicArrayException
 
-        # Loop that iterates through the array starting at 'start', ending at 'end', and incrementing once
+        # Loop that iterates through the array starting at 'start', ending at 'end'
         input = (self._data[num] for num in range(start, end))
 
         return DynamicArray(input)
 
     def merge(self, second_da: "DynamicArray") -> None:
         """
-        TODO: Write this implementation
+        Method that appends elements from one array to another
         """
         # This method takes another Dynamic Array object as a parameter, and appends all elements
         # from this other array onto the current one, in the same order as they are stored in the array
         # parameter.
 
+        # Loop that uses the append method (as defined above) to append 'second_da' to the DynamicArray
         for num in range(second_da._size):
             self.append(second_da[num])
 
     def map(self, map_func) -> "DynamicArray":
         """
-        TODO: Write this implementation
+        Method that creates a new Dynamic Array (new_arr) where each value is derived by applying the
+        map_func to each value in the corresponding array.
         """
 
+        # Create new DynamicArray called new_arr.  I think this took me over an hour to figure out that
+        # I needed to put a [] inside the ().  -_-
         new_arr = DynamicArray([])
 
+        # Loop through DynamicArray, derive the new values (apply map_func to each value in DynamicArray) and then
+        # write the new findings to the new Dynamics Array (new_arr).
         for num in range(DynamicArray.length(self)):
             new_arr.append(map_func(self[num]))
         return new_arr
@@ -275,6 +281,7 @@ class DynamicArray:
             ans = ans + ans
         return ans
 
+
 def find_mode(arr: DynamicArray) -> (DynamicArray, int):
     """
     TODO: Write this implementation
@@ -290,6 +297,7 @@ def find_mode(arr: DynamicArray) -> (DynamicArray, int):
         counter += 1
 
     return mode, frequency
+
 
 # ------------------- BASIC TESTING -----------------------------------------
 
