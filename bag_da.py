@@ -83,11 +83,11 @@ class Bag:
         TODO: Write this implementation
         """
 
+        counter = 1
+
         # if the two bags are not of equal length, then the result in "False"
         if self._da.length() != second_bag._da.length():
             return False
-
-        counter = 1
 
         # Loop through the different lists and compare the elements of the array (arr_el).  If they all match, return
         # true, else return false.
@@ -102,6 +102,7 @@ class Bag:
         """
         TODO: Write this implementation
         """
+
         pass
 
     def __next__(self):
@@ -109,7 +110,6 @@ class Bag:
         TODO: Write this implementation
         """
         pass
-
 
 # ------------------- BASIC TESTING -----------------------------------------
 
