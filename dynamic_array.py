@@ -184,10 +184,10 @@ class DynamicArray:
             raise DynamicArrayException
 
 
-        if (self._size * 2) < 10 and self._size < (self._capacity / 4):
+        if (self._size * 2) > 10 and self._size < (self._capacity / 4):
             if self._size <= 4:
                 self.resize(10)
-            elif self._size * 2 >= 10 and self._size < (self._capacity / 4):
+            else:
                 self.resize(self._size * 2)
 
         for num in range(index, self._size - 1, 1):
