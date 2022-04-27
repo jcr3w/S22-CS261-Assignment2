@@ -1,9 +1,9 @@
-# Name:
-# OSU Email:
+# Name: Justin Greer
+# OSU Email: greerjus@oregonstate.edu
 # Course: CS261 - Data Structures
-# Assignment:
-# Due Date:
-# Description:
+# Assignment: Assignment 2 - Dynamic Array
+# Due Date: April 25, 2022
+# Description: Program that creates a number of methods for modifying, testing, and evaluating the Bag ADT.
 
 
 from dynamic_array import *
@@ -44,17 +44,22 @@ class Bag:
 
     def add(self, value: object) -> None:
         """
-        TODO: Write this implementation
+        Method that adds element(s) to the bag.
         """
+
+        # Uses append() method from DynamicArray too add an element to the bag.
         self._da.append(value)
 
     def remove(self, value: object) -> DynamicArray:
         """
-        TODO: Write this implementation
+        Method that removes element(s) from the bag.
         """
 
+        # Counter used to count the number of iterations for the while loop.
         counter = 0
 
+        # Loops through the array and removes identified values.  Uses get_at_index() and remove_at_index() methods
+        # from DynamicArray.  Returns True if element is removed from bag, returns False otherwise.
         while counter < self._da.length():
             if self._da.get_at_index(counter) == value:
                 self._da.remove_at_index(counter)
@@ -64,12 +69,16 @@ class Bag:
 
     def count(self, value: object) -> int:
         """
-        TODO: Write this implementation
+        Method that counts the number of times an element appears in an array.
         """
 
+        # Counter used to count the number of iterations for the while loop.
         counter = 0
+
+        # Counts the number of times an element is counted
         plus_up = 0
 
+        # Loops through the array and counts the number of times an element is counted.
         while counter < self._da.length():
             if self._da.get_at_index(counter) == value:
                 plus_up += 1
@@ -78,19 +87,20 @@ class Bag:
 
     def clear(self) -> None:
         """
-        TODO: Write this implementation
+        Method that clears the contents of the bag
         """
-        # This method clears the contents of the bag. It must be implemented with O(1) runtime
-        # complexity.
 
+        # Sets self._da to an empty DynamicArray.  Is this the right way to do this?  I couldn't think of
+        # a better way at O(1) complexity.
         self._da = DynamicArray([])
 
     def equal(self, second_bag: "Bag") -> bool:
         """
-        TODO: Write this implementation
+        Method that takes two bags (arrays) and compares the contents.  If they are equal, it returns True.
+        Else it returns False.
         """
 
-        # counter used to count the number of iterations for the while loop.
+        # Counter used to count the number of iterations for the while loop.
         counter = 0
 
         # if the two bags are not of equal length, then the result in "False"
