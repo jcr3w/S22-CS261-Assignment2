@@ -3,8 +3,7 @@
 # Course: CS261 - Data Structures
 # Assignment: Assignment 2 - Dynamic Array
 # Due Date: April 25, 2022
-# Description:
-
+# Description: Program that creates a number of methods for modifying, testing, and evaluating Dynamic Arrays.
 
 from static_array import StaticArray
 
@@ -245,18 +244,22 @@ class DynamicArray:
         new_arr = DynamicArray([])
 
         # Loop through DynamicArray, derive the new values (apply map_func to each value in DynamicArray) and then
-        # write the new findings to the new Dynamics Array (new_arr).
+        # write the new findings to the new Dynamics Array (new_arr).  Return new_arr.
         for num in range(DynamicArray.length(self)):
             new_arr.append(map_func(self[num]))
         return new_arr
 
     def filter(self, filter_func) -> "DynamicArray":
         """
-        TODO: Write this implementation
+        Method that creates a new Dynamic Array (new_arr) and only populates it with elements from the original
+        array that the filter_func defines as TRUE.
         """
 
+        # Create new DynamicArray called new_arr.  Learned my lesson from the map method.
         new_arr = DynamicArray([])
 
+        # Loop through DynamicArray, write the values from the original array to 'new_arr' that are deemed true
+        # by filter_func.  Return new_arr.
         for num in range(DynamicArray.length(self)):
             if filter_func(self[num]) == True:
                 new_arr.append(self[num])
