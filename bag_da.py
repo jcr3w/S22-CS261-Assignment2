@@ -62,8 +62,6 @@ class Bag:
             counter += 1
         return False
 
-
-
     def count(self, value: object) -> int:
         """
         TODO: Write this implementation
@@ -82,7 +80,10 @@ class Bag:
         """
         TODO: Write this implementation
         """
-        pass
+        # This method clears the contents of the bag. It must be implemented with O(1) runtime
+        # complexity.
+
+        self._da = DynamicArray([])
 
     def equal(self, second_bag: "Bag") -> bool:
         """
