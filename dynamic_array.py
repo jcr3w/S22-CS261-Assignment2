@@ -271,6 +271,19 @@ class DynamicArray:
         TODO: Write this implementation
         """
 
+        new_arr = DynamicArray([])
+
+        for num in range(self.length()):
+            if initializer is None:
+                value = self[0]
+            else:
+                value = initializer
+
+        for num in range(self.length()):
+            value = reduce_func(value, num)
+            new_arr.append(reduce_func(self[num]))
+        return new_arr
+
 def find_mode(arr: DynamicArray) -> (DynamicArray, int):
     """
     TODO: Write this implementation
