@@ -280,9 +280,9 @@ class DynamicArray:
                 value = initializer
 
         for num in range(self.length()):
-            value = reduce_func(value, num)
-            new_arr.append(reduce_func(self[num]))
-        return new_arr
+            new_arr.append(reduce_func(value, self[num]))
+            value = reduce_func(value, self[num])
+        return value
 
 def find_mode(arr: DynamicArray) -> (DynamicArray, int):
     """
