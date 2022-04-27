@@ -120,8 +120,15 @@ class Bag:
         """
         TODO: Write this implementation
         """
+        self._size = 0
+        self._capacity = 10
+        self._data = StaticArray(self._capacity)
+        counter = 0
 
-        pass
+        while counter < self._da.get_capacity():
+            print(self._da.get_at_index(counter))
+            counter +=1
+
 
     def __next__(self):
         """

@@ -270,20 +270,6 @@ class DynamicArray:
         """
         TODO: Write this implementation
         """
-        da_length = DynamicArray.length(self)
-        ans = 0
-        x = 0
-        y = 0
-
-        for num in range(da_length):
-            if initializer is None:
-                x = self[0]
-                ans = reduce_func(x, y)
-            else:
-                x = initializer
-                ans = reduce_func(x, y)
-            ans = ans + ans
-        return ans
 
 def find_mode(arr: DynamicArray) -> (DynamicArray, int):
     """
