@@ -143,7 +143,6 @@ class DynamicArray:
         if self.length() >= self.get_capacity():
             self.resize(self.get_capacity() * 2)
 
-        # TBD.  Rewrite in cleanup.
         self._data[self.length()] = value
         self._size = self._size + 1
 
@@ -268,25 +267,32 @@ class DynamicArray:
 
     def reduce(self, reduce_func, initializer=None) -> object:
         """
-        TODO: Write this implementation
+        Method that sequentially applies the reduce_func to all elements of the Dynamic Array, and
+        returns the resulting value.
         """
 
+        # Create new array to hold outputs
         new_arr = DynamicArray([])
+        value = self[0]
 
+        # Loop through array, set initializer
         for num in range(self.length()):
             if initializer is None:
                 value = self[0]
             else:
                 value = initializer
 
+        # Loop through array, sequentially apply the reduce_func.  Return value.
         for num in range(self.length()):
+            if initializer is None:
+                value = value
             new_arr.append(reduce_func(value, self[num]))
             value = reduce_func(value, self[num])
         return value
 
 def find_mode(arr: DynamicArray) -> (DynamicArray, int):
     """
-    TODO: Write this implementation
+    Write a method that returns the mode and the frequency.
     """
 
     mode = DynamicArray([])
